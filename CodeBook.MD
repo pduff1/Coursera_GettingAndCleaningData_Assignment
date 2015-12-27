@@ -26,9 +26,11 @@ Further detail around the background of the data is also available form the foll
 
 [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
+The CodeBook should also be read along side the "run_analysis.R" script, as the code comments with this script provide additional detail on the transformation of the data performed by the script.
+
 ### Outputs from run_analysis.R:
 
-The CodeBook contains details of variables of both the data sets output from running run_analysis.R:
+The CodeBook contains details of Variables of both the data sets output from running run_analysis.R:
 
 Both data sets have been transformed/formatted as tidy data sets containing 
 - Each Variable measured in one Column
@@ -41,7 +43,7 @@ Both data sets have been transformed/formatted as tidy data sets containing
 
  * Merges the training and the test sets to create one data set
 	 * Combines X\_test.txt and X\_train.txt to provide the full set of Variables and data measured (10299 observations)
-	 * Combines Y\_test.txt and Y\_train.txt to provide the full set Activity Ids for the Activity that was measured for the subject for each observation
+	 * Combines Y\_test.txt and Y\_train.txt to provide the full set Activity Ids for the Activity that was measured for each subject for each observation
 	 * subject\_test and subject\_train.txt to identify the subject ID of the subject that took part in each observation.
  * Extracts only the measurements on the mean and standard deviation for each measurement
 	 * Variables selected that contained only mean or standard deviation results (contain "mean()" or "std()") based on the features_info.txt and features.txt content.  This results in 66 Variables retained for the final dataset giving a total of 68 when combined with subjectId and activity.
@@ -52,7 +54,7 @@ Both data sets have been transformed/formatted as tidy data sets containing
 
 * **tidy_avgs.txt** (180 x 68) - From the data in tidy_stdmean.txt (output from step 4), a second, independent tidy data set: 
  * with the averages of each variable for each activity and each subject
-	 * data grouped by subjectId and activity (using dplyr group_by() and summarise_each(funs(mean)) functions to give a data set of averages for each subject and activity (180 observations x 68 columns)
+	 * data grouped by subjectId and activity (using dplyr group_by() and summarise_each(funs(mean)) functions to give a data set of average values for each Variable for each subject and activity (180 observations x 68 columns)
  
 The "run_analysis.R" script contains further comments highlighting rationale and detail for the transformation and formatting decisions made, and should be viewed alongside this file.
 
@@ -60,15 +62,15 @@ The tidy_stdmean.txt files contains all observations from the test and train dat
 
 ### Variables in tidy_stdmean.txt
 
-The tidy_stdmean.txt data contains 68 variables as listed below.  Variables 1 & 2 contain observation identifiers for the subject and activity that the measurements are for.
+The tidy_stdmean.txt data contains 68 variables as listed below.  Variables 1 & 2 contain observation identifiers/names for the subject and activity that the measurements are for.
 
-Variables 3 to 68 are the 66 columns identified as containing data that contains mean or standard deviation values out of the original set of 561 measures (run_analysis.R script for detailed comments on inclusion criteria of fields (those containing "mean()" or "std())".
+Variables 3 to 68 are the 66 columns identified as containing data that contains mean or standard deviation values out of the original set of 561 measures.  See the run_analysis.R script for more detailed comments on inclusion criteria of fields, however at a high level this was filtered based on those containing "mean()" or "std() in the Variable name, following analysis of the contents of the variable names in the features.txt file and the supporting information in features_info.txt".
 
 Variables 3 to 68 contain Measure values where the meaning of the column heading can be interpreted from the name components as follows:
 
 - **time** -  Time domain signals captured at a rate of 50Hz from the accelerometer and gyroscope 3-axial raw signals (see features_info.txt)
 - **freq** - Frequency domain signals, where a Fast Fourier Transform was applied to some of signals.
-- Body - Body Acceleration or Gyroscope signal
+- **Body** - Body Acceleration or Gyroscope signal
 - **Acc** - Accelerometer signal
 - **Gravity** - Gravity acceleration signal
 - **Jerk** - Body linear acceleration and angular velocity derived in time to give the Jerk signal 
@@ -80,7 +82,7 @@ Variables 3 to 68 contain Measure values where the meaning of the column heading
 - **Z** - Axis for the 3-axial signals in the Z direction
 - **Mag** - magnitude of three dimensional signals calculated using the Euclidian norm
 
-**Units** - For variables 3 to 68 data values are normalized and bounded within [-1,1] (see README file supplied with the project data).  Original measurements were conducted using the following units:
+**Units** - For variables 3 to 68 data values are normalized and bounded within \[-1,1\] (see README file supplied with the project data).  Original measurements were conducted using the following units:
 
 - acceleration units 'g's (gravity of earth -> 9.80665 m/sec2)
 - gyroscope units rad/sec
@@ -100,7 +102,7 @@ Text of all variable names has been formatted to lowerCamelCase to meet the crit
 
 Variables in tidy_stdmean.txt are as follows:
 
-1. **subjectId** - Subject Identifier (1 - 30). The source data was generated from experim****ents with a group of 30 volunteers aged 19-48 years.  
+1. **subjectId** - Subject Identifier (1 - 30). The source data was generated from experiments with a group of 30 volunteers aged 19-48 years.  
 1. **activity** - Activity Name.  Each of the 30 subjects performed six activities wearing a smartphone on the waist.  The activities are identified by the following 6 possible values (formatted to lowerCamelCase from the original activity labels described in activity_labels.txt:
 	1. walking
 	2. walkingUpstairs
@@ -177,7 +179,7 @@ Variables in tidy_stdmean.txt are as follows:
 
 ### Variables in tidy_avgs.txt
 
-The variables in tidy_avgs.txt have names and descriptions, corresponding to those in tidy_stdmean.txt (outlined above).  Columns 1 and 2 are identical and represent subjectId and activity.  All other columns are the average of the values described for tidy_stdmean.txt, grouped by subjectId and activity.  The names of these columns have therefore been updated to include the "avg" prefix and formatted to maintain lowerCamelCase format.  All units of measurements and meanings are the same as described for tidy_stdmean.
+The variables in tidy_avgs.txt have names and descriptions, corresponding to those in tidy_stdmean.txt (outlined above).  Columns 1 and 2 are identical and represent subjectId and activity.  All other columns are the average of the values described for tidy_stdmean.txt, but for observations grouped by subjectId and activity.  The names of these columns have therefore been updated to include the "avg" prefix and formatted to maintain lowerCamelCase format.  All units of measurements and meanings are the same as described for tidy_stdmean.
 
 1. **subjectId**
 1. **activity**

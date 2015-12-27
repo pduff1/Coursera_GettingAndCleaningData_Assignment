@@ -4,8 +4,8 @@
 
 The following files form part of the Getting and Cleaning Data project assignment submission:
 
-1. **run_analysis.R** (secured in GitHub - script for generating the required tidy data sets.
-2. **CodeBook.md** (secured in GitHub - CodeBook describing the Variables, and other data features and background for the data contained in the output data sets.
+1. **run_analysis.R** (secured in GitHub - script for generating the required tidy data sets).
+2. **CodeBook.md** (secured in GitHub - CodeBook describing the Variables, and other data features and background for the data contained in the output data sets).
 3. **README.md** (secured in GitHub - this file - overview of files included in the project and configuration for running the script).
 4. **tidy_stdmean.tx**t (secured in GitHub - tidy data set out put for steps up to the end of step 4.
 5. **tidy_avgs.txt** (Secured in GitHub and submitted as part of the project submission page - tidy data set output for the results of the end of step 5.)
@@ -44,7 +44,7 @@ The run_analysis.R script should be run using the following command on the R com
 
 Note: the script has not been placed within a function and therefore cannot be called by the "run_analysis()" command.  This done to capture all intermediary data structures during development and to have these available once the script has run.  This approach has been preserved in the submitted version to make this data available to anyone testing the script.  Therefore the command listed above must be used to run the script.
 
-The script was developed and run using the R Console, and therefore has not been tested with R studio, but should run the same.
+The script was developed and run using the R Console, but should run in the same if being run from R Studio.
 
 The run_analysis.R script can take a while to run, and should provide the following feed back during running:
 
